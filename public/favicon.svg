@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="8" fill="#1C1510"/>
+  <!-- Smoke haze -->
+  <path d="M4 22C8 18 12 24 16 20C20 16 24 22 28 18" stroke="#C9C2B8" stroke-width="2" stroke-linecap="round" stroke-opacity="0.4"/>
+  <!-- Sun/Ember -->
+  <circle cx="16" cy="14" r="6" fill="#D8432B"/>
+  <circle cx="16" cy="14" r="8" stroke="#D8432B" stroke-width="1.5" stroke-opacity="0.3"/>
+  <!-- Small sprout leaf (tunas) for hope -->
+  <path d="M16 28C16 25 18 23 21 23C21 26 19 28 16 28Z" fill="#5E8C61"/>
+</svg>
+
