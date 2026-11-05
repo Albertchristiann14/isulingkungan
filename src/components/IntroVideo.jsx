@@ -6,7 +6,6 @@ import introWebm from '../assets/intro.webm';
 import introPoster from '../assets/intro-poster.jpg';
 
 const SmokeScene = lazy(() => import('./SmokeScene'));
-const FireEmberScene = lazy(() => import('./FireEmberScene'));
 
 export default function IntroVideo({ onEnterContent }) {
   const [isMuted, setIsMuted] = useState(true);
@@ -71,13 +70,6 @@ export default function IntroVideo({ onEnterContent }) {
       <div className="absolute inset-0 z-10 pointer-events-none" aria-hidden="true">
         <Suspense fallback={null}>
           <SmokeScene density={0.45} tintColor="#C9C2B8" />
-        </Suspense>
-      </div>
-
-      {/* 3D Fiery Embers & Sparks Rising over the Fire */}
-      <div className="absolute inset-0 z-15 pointer-events-none" aria-hidden="true">
-        <Suspense fallback={null}>
-          <FireEmberScene intensity={0.65} count={140} speedFactor={1.1} />
         </Suspense>
       </div>
 

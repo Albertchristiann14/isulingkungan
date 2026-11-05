@@ -19,7 +19,7 @@ Kebakaran hutan dan lahan di Indonesia memiliki karakteristik unik yang berbeda 
 
 ### 1. Intro Sinematik Layar Penuh (100dvh)
 - Video latar resolusi 720p kabut asap pekat Kalimantan dengan format ganda MP4 (H.264) & WebM (VP9).
-- Layer partikel kabut 3D (*SmokeScene*) dan percikan bara api 3D (*FireEmberScene*) yang bergerak menggunakan **Three.js / React Three Fiber**.
+- Layer partikel kabut 3D (*SmokeScene*) yang bergerak perlahan menggunakan **Three.js / React Three Fiber**.
 - Transisi *fade-to-kabut* saat pengguna menggulir layar, mensimulasikan kabut asap yang perlahan menipis masuk ke dashboard data.
 - Kontrol lengkap: *Lewati Intro*, *Bisu/Suara*, dan tombol *Lanjutkan*.
 
