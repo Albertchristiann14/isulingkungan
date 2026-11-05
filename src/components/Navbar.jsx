@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, EyeOff, Eye, Flame } from 'lucide-react';
+import { Menu, X, EyeOff, Eye } from 'lucide-react';
 import { useMotionSettings } from '../context/MotionContext';
 
 export default function Navbar({ showNavbar = true }) {
@@ -43,17 +43,21 @@ export default function Navbar({ showNavbar = true }) {
     return null;
   }
 
+  const isHome = location.pathname === '/';
+
   return (
     <header
       role="banner"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#14110F]/90 backdrop-blur-md border-b border-arang/80 py-2.5 shadow-xl'
-          : 'bg-gradient-to-b from-black/85 via-black/40 to-transparent py-3.5'
+          ? 'bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#E6E0D6] py-2.5 shadow-sm text-[#1F2428]'
+          : isHome
+            ? 'bg-gradient-to-b from-black/85 via-black/40 to-transparent py-3.5 text-white'
+            : 'bg-[#FAF8F5]/90 backdrop-blur-sm border-b border-[#E6E0D6]/60 py-3 text-[#1F2428]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo with 44px min hit area */}
+        {/* Brand Logo */}
         <Link 
           to="/" 
           className="flex items-center gap-3 group focus-visible:ring-2 focus-visible:ring-bara rounded-xl p-1 min-h-[44px] transition-transform active:scale-95"
@@ -66,17 +70,28 @@ export default function Navbar({ showNavbar = true }) {
           </div>
 
           <div className="flex flex-col">
-            <span className="font-bricolage text-base sm:text-lg font-bold text-white tracking-tight leading-tight flex items-center gap-1.5">
+            <span className={`font-bricolage text-base sm:text-lg font-bold tracking-tight leading-tight flex items-center gap-1.5 ${
+              !isScrolled && isHome ? 'text-white' : 'text-[#181C1F]'
+            }`}>
               Langit Kelabu
             </span>
-            <span className="text-[10px] font-mono tracking-wider uppercase text-kabut-dark">
+            <span className={`text-[10px] font-mono tracking-wider uppercase ${
+              !isScrolled && isHome ? 'text-kabut' : 'text-gambut-muted'
+            }`}>
               Krevia Digital
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 lg:gap-1.5 bg-arang/40 p-1 rounded-full border border-arang/60 backdrop-blur-sm" aria-label="Navigasi Utama">
+        <nav 
+          className={`hidden md:flex items-center gap-1 p-1 rounded-full border backdrop-blur-sm ${
+            !isScrolled && isHome 
+              ? 'bg-arang/50 border-arang/70 text-white' 
+              : 'bg-[#F2EDE4]/80 border-[#E2DAD0] text-[#495057]'
+          }`} 
+          aria-label="Navigasi Utama"
+        >
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
@@ -85,7 +100,9 @@ export default function Navbar({ showNavbar = true }) {
                 `px-4 py-2 rounded-full text-xs lg:text-sm font-medium transition-all duration-150 min-h-[38px] flex items-center ${
                   isActive
                     ? 'bg-bara text-white font-semibold shadow-md shadow-bara/25'
-                    : 'text-kabut-light/80 hover:text-white hover:bg-gambut/60'
+                    : !isScrolled && isHome
+                      ? 'text-kabut-light hover:text-white hover:bg-gambut/60'
+                      : 'text-[#495057] hover:text-[#181C1F] hover:bg-white/80'
                 }`
               }
             >
@@ -99,8 +116,12 @@ export default function Navbar({ showNavbar = true }) {
           {/* Accessibility: Toggle Animation button (44px target) */}
           <button
             onClick={toggleAnimations}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-arang/70 hover:bg-arang border border-kabut/20 text-kabut-light text-xs font-medium transition min-h-[44px] focus-visible:ring-2 focus-visible:ring-bara active:scale-95"
-            title={animationsEnabled ? "Matikan animasi visual (ramah vestibular)" : "Nyalakan animasi visual"}
+            className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full border text-xs font-medium transition min-h-[44px] focus-visible:ring-2 focus-visible:ring-bara active:scale-95 ${
+              !isScrolled && isHome
+                ? 'bg-arang/80 border-kabut/25 text-kabut-light hover:bg-arang'
+                : 'bg-[#F2EDE4] border-[#DDD5C7] text-[#2B2F33] hover:bg-[#E7DFD3]'
+            }`}
+            title={animationsEnabled ? "Matikan animasi visual" : "Nyalakan animasi visual"}
             aria-label={animationsEnabled ? "Matikan animasi visual" : "Nyalakan animasi visual"}
             aria-pressed={animationsEnabled}
           >
@@ -111,7 +132,7 @@ export default function Navbar({ showNavbar = true }) {
               </>
             ) : (
               <>
-                <EyeOff className="w-3.5 h-3.5 text-yellow-400" aria-hidden="true" />
+                <EyeOff className="w-3.5 h-3.5 text-yellow-600" aria-hidden="true" />
                 <span className="hidden sm:inline text-[11px] font-medium">Animasi Diam</span>
               </>
             )}
@@ -120,7 +141,11 @@ export default function Navbar({ showNavbar = true }) {
           {/* Mobile Menu Button (44px target) */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden flex items-center justify-center w-11 h-11 rounded-xl bg-arang/70 text-kabut hover:text-white border border-kabut/20 transition active:scale-95 focus-visible:ring-2 focus-visible:ring-bara"
+            className={`md:hidden flex items-center justify-center w-11 h-11 rounded-xl border transition active:scale-95 focus-visible:ring-2 focus-visible:ring-bara ${
+              !isScrolled && isHome
+                ? 'bg-arang/80 text-kabut hover:text-white border-kabut/20'
+                : 'bg-[#F2EDE4] text-[#2B2F33] hover:text-black border-[#DDD5C7]'
+            }`}
             aria-label={mobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-nav"
@@ -132,7 +157,7 @@ export default function Navbar({ showNavbar = true }) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div id="mobile-nav" className="md:hidden bg-[#14110F] border-b border-arang px-4 pt-3 pb-6 space-y-2 animate-in fade-in slide-in-from-top-2 duration-200">
+        <div id="mobile-nav" className="md:hidden bg-[#FAF8F5] border-b border-[#E6E0D6] px-4 pt-3 pb-6 space-y-2 animate-in fade-in slide-in-from-top-2 duration-200 shadow-xl">
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
@@ -141,14 +166,14 @@ export default function Navbar({ showNavbar = true }) {
                 `flex items-center min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium transition ${
                   isActive
                     ? 'bg-bara text-white font-semibold'
-                    : 'text-kabut-light hover:bg-arang/50'
+                    : 'text-[#333A40] hover:bg-[#F2EDE4]'
                 }`
               }
             >
               {link.name}
             </NavLink>
           ))}
-          <div className="pt-3 border-t border-arang/60 text-xs text-kabut-dark flex items-center justify-between">
+          <div className="pt-3 border-t border-[#E6E0D6] text-xs text-gambut-muted flex items-center justify-between">
             <span>Krevia Digital • Lomba Web Lingkungan 2026</span>
             <span className="text-tunas text-[11px] font-mono">#LangitKelabu</span>
           </div>

@@ -50,23 +50,18 @@ export default function App() {
   }, [animationsEnabled]);
 
   // CRITICAL FIX: Reset scroll to top on every route/tab change!
-  // Ensures Lenis and native browser scroll reset to 0 immediately
   useEffect(() => {
-    // 1. Reset Lenis scroll engine if active
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { immediate: true, force: true });
     }
-    // 2. Reset native browser window and document elements
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
 
-    // 3. Move accessibility focus to main without scrolling
     if (mainContentRef.current && location.pathname !== '/') {
       try {
         mainContentRef.current.focus({ preventScroll: true });
       } catch (e) {
-        // Fallback for older browsers
         mainContentRef.current.focus();
       }
     }
@@ -95,8 +90,8 @@ export default function App() {
   }, [location.pathname]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#14110F] text-[#E7E2DB] selection:bg-bara selection:text-white">
-      {/* Accessibility: Skip to Content Link (WCAG 2.2 AA) */}
+    <div className="flex flex-col min-h-screen bg-[#FAF8F5] text-[#1F2428] selection:bg-bara selection:text-white">
+      {/* Accessibility: Skip to Content Link */}
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-[9999] px-4 py-2.5 bg-bara text-white text-xs font-semibold rounded-xl shadow-2xl border border-white/20 transition-all"
@@ -120,7 +115,7 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: animationsEnabled ? 0.28 : 0 }}
+            transition={{ duration: animationsEnabled ? 0.25 : 0 }}
             className="w-full"
           >
             <Routes location={location}>

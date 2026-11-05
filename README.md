@@ -126,3 +126,4 @@ Atau hubungkan repositori GitHub ini langsung melalui dashboard [Vercel](https:/
 ---
 
 *Dibuat dengan dedikasi untuk edukasi lingkungan dan perlindungan masa depan bumi oleh **Krevia Digital**.*
+

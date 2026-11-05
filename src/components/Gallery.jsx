@@ -55,13 +55,13 @@ export default function Gallery() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-arang/70 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#E6E0D6] pb-4">
         <div>
-          <h3 className="text-lg sm:text-xl font-bold font-bricolage text-white flex items-center gap-2">
+          <h3 className="text-xl sm:text-2xl font-bold font-bricolage text-[#181C1F] flex items-center gap-2">
             <Camera className="w-5 h-5 text-bara" aria-hidden="true" />
             <span>Dokumentasi Visual Lapangan</span>
           </h3>
-          <p className="text-xs text-kabut-dark">
+          <p className="text-xs text-gambut-muted">
             Rekaman visual situasi nyata penanganan kabut asap dan upaya restorasi di garis depan.
           </p>
         </div>
@@ -82,41 +82,41 @@ export default function Gallery() {
                 setSelectedPhoto(item);
               }
             }}
-            className="group cursor-pointer rounded-2xl overflow-hidden bg-[#14110F] border border-arang hover:border-bara/50 transition-all duration-200 flex flex-col justify-between focus-visible:ring-2 focus-visible:ring-bara active:scale-[0.98]"
+            className="group cursor-pointer rounded-3xl overflow-hidden bg-white border border-[#E6E0D6] hover:border-bara/50 transition-all duration-200 flex flex-col justify-between focus-visible:ring-2 focus-visible:ring-bara shadow-soft hover:shadow-soft-lg active:scale-[0.98]"
           >
             {/* Visual Box Placeholder */}
-            <div className="relative aspect-video w-full bg-gradient-to-tr from-[#121416] via-[#3B2A20] to-[#2B2F33] flex items-center justify-center p-4 overflow-hidden">
+            <div className="relative aspect-video w-full bg-gradient-to-tr from-[#3B2A20] via-[#5A4335] to-[#2B2F33] flex items-center justify-center p-4 overflow-hidden">
               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#D8432B_1px,transparent_1px)] [background-size:16px_16px]" aria-hidden="true" />
               
               <div className="relative z-10 text-center space-y-1">
-                <span className="inline-block px-2.5 py-1 rounded-full bg-black/65 text-[10px] font-mono text-kabut-light border border-kabut/20">
+                <span className="inline-block px-3 py-1 rounded-full bg-black/60 text-[10px] font-mono font-bold text-white border border-white/20">
                   {item.kategori}
                 </span>
-                <p className="text-xs font-semibold text-white/90 group-hover:text-bara transition-colors">
+                <p className="text-xs font-semibold text-white group-hover:text-bara-light transition-colors">
                   [Foto: {item.judul}]
                 </p>
               </div>
 
-              <div className="absolute bottom-2 right-2 p-1.5 rounded-lg bg-black/60 text-kabut opacity-0 group-hover:opacity-100 transition" aria-hidden="true">
-                <Maximize2 className="w-3.5 h-3.5" />
+              <div className="absolute bottom-2.5 right-2.5 p-1.5 rounded-lg bg-black/60 text-white opacity-0 group-hover:opacity-100 transition" aria-hidden="true">
+                <Maximize2 className="w-4 h-4" />
               </div>
             </div>
 
             {/* Photo Metadata & Caption */}
-            <div className="p-4 space-y-2 text-xs flex-1 flex flex-col justify-between">
+            <div className="p-5 space-y-2 text-xs flex-1 flex flex-col justify-between">
               <div>
-                <h4 className="font-bold text-white text-sm font-bricolage group-hover:text-bara transition-colors">
+                <h4 className="font-bold text-[#181C1F] text-base font-bricolage group-hover:text-bara transition-colors leading-snug">
                   {item.judul}
                 </h4>
-                <p className="text-kabut-dark text-[11px] font-mono mt-0.5">
+                <p className="text-gambut-muted text-[11px] font-mono mt-1">
                   {item.lokasi} • {item.tanggal}
                 </p>
-                <p className="text-kabut-light/75 text-xs mt-2 line-clamp-2">
+                <p className="text-[#495057] text-xs mt-2 line-clamp-2">
                   {item.keterangan}
                 </p>
               </div>
 
-              <div className="pt-2 border-t border-arang/50 text-[10px] text-kabut-dark truncate">
+              <div className="pt-3 border-t border-[#EFECE6] text-[10px] text-gambut-muted truncate">
                 Kredit: {item.kredit}
               </div>
             </div>
@@ -130,42 +130,42 @@ export default function Gallery() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-photo-title"
-          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
           onClick={() => setSelectedPhoto(null)}
         >
           <div
-            className="max-w-2xl w-full bg-[#14110F] border border-arang rounded-2xl overflow-hidden shadow-2xl space-y-4 p-6"
+            className="max-w-2xl w-full bg-white border border-[#E6E0D6] rounded-3xl overflow-hidden shadow-2xl space-y-4 p-6 sm:p-8"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between border-b border-arang/60 pb-3">
+            <div className="flex items-center justify-between border-b border-[#EFECE6] pb-4">
               <div>
                 <span className="text-[10px] font-mono uppercase text-bara font-bold">
                   {selectedPhoto.kategori}
                 </span>
-                <h3 id="modal-photo-title" className="text-xl font-bold font-bricolage text-white">
+                <h3 id="modal-photo-title" className="text-2xl font-bold font-bricolage text-[#181C1F]">
                   {selectedPhoto.judul}
                 </h3>
               </div>
               <button
                 onClick={() => setSelectedPhoto(null)}
-                className="flex items-center justify-center w-11 h-11 rounded-xl bg-arang text-kabut hover:text-white transition active:scale-95 focus-visible:ring-2 focus-visible:ring-bara"
+                className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#F2EDE4] text-[#2B2F33] hover:text-black transition active:scale-95 focus-visible:ring-2 focus-visible:ring-bara"
                 aria-label="Tutup pratinjau foto"
               >
                 <X className="w-5 h-5" aria-hidden="true" />
               </button>
             </div>
 
-            <div className="aspect-video w-full rounded-xl bg-gradient-to-br from-[#3B2A20] to-[#121416] border border-arang flex flex-col items-center justify-center p-6 text-center">
-              <Camera className="w-10 h-10 text-bara mb-2 animate-pulse" aria-hidden="true" />
-              <p className="text-sm font-semibold text-white">{selectedPhoto.judul}</p>
-              <p className="text-xs text-kabut-dark font-mono mt-1">
+            <div className="aspect-video w-full rounded-2xl bg-gradient-to-br from-[#3B2A20] to-[#2B2F33] border border-[#E6E0D6] flex flex-col items-center justify-center p-6 text-center shadow-inner">
+              <Camera className="w-12 h-12 text-bara mb-2 animate-pulse" aria-hidden="true" />
+              <p className="text-base font-semibold text-white">{selectedPhoto.judul}</p>
+              <p className="text-xs text-kabut-light font-mono mt-1">
                 {selectedPhoto.lokasi} • {selectedPhoto.tanggal}
               </p>
             </div>
 
-            <div className="space-y-2 text-xs sm:text-sm text-kabut-light">
+            <div className="space-y-2 text-xs sm:text-sm text-[#495057]">
               <p className="leading-relaxed">{selectedPhoto.keterangan}</p>
-              <p className="text-xs text-kabut-dark border-t border-arang/50 pt-2 font-mono">
+              <p className="text-xs text-gambut-muted border-t border-[#EFECE6] pt-3 font-mono">
                 Kredit & Hak Cipta: {selectedPhoto.kredit}
               </p>
             </div>

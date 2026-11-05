@@ -3,7 +3,7 @@ import ArticleCard from '../components/ArticleCard';
 import Gallery from '../components/Gallery';
 import ActionChecklist from '../components/ActionChecklist';
 import LoadingFallback from '../components/LoadingFallback';
-import { BarChart3, MapPin, BookOpen, Camera, CheckSquare } from 'lucide-react';
+import { BarChart3 } from 'lucide-react';
 
 const HotspotChart = lazy(() => import('../components/HotspotChart'));
 const HotspotMap = lazy(() => import('../components/HotspotMap'));
@@ -43,15 +43,15 @@ export default function Konten() {
     <div className="w-full min-h-screen pt-24 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-20">
       {/* Header */}
       <section className="text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-arang/70 border border-kabut/20 text-kabut text-xs uppercase tracking-wider font-mono">
-          <BarChart3 className="w-3.5 h-3.5 text-bara" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F2EDE4] border border-[#DDD5C7] text-gambut text-xs uppercase tracking-wider font-mono font-bold">
+          <BarChart3 className="w-3.5 h-3.5 text-bara" aria-hidden="true" />
           <span>Arsip Data & Dokumentasi</span>
         </div>
-        <h1 className="text-3xl sm:text-5xl font-bold font-bricolage text-white tracking-tight">
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-bricolage text-[#181C1F] tracking-tight">
           Eksplorasi Data, Dampak, dan Solusi
         </h1>
-        <p className="text-sm sm:text-base text-kabut-light/85 max-w-prose-70 mx-auto font-light leading-relaxed">
-          Semua analisis didasarkan pada laporan satelit pemantauan karhutla resmi, evaluasi dampak sosio-ekonomi independen, dan kesaksian di lapangan.
+        <p className="text-sm sm:text-base text-[#495057] max-w-prose-70 mx-auto font-normal leading-relaxed">
+          Semua analisis didasarkan pada laporan satelit pemantauan karhutla resmi, evaluasi dampak sosio-ekonomi independen, dan kesaksian di garis depan.
         </p>
       </section>
 
@@ -70,14 +70,14 @@ export default function Konten() {
 
       {/* 2. TIGA ARTIKEL RINGKAS TEMA KARHUTLA */}
       <section className="space-y-8">
-        <div className="border-b border-arang/70 pb-4">
-          <span className="text-xs font-mono uppercase tracking-wider text-bara font-semibold">
+        <div className="border-b border-[#E6E0D6] pb-4">
+          <span className="text-xs font-mono uppercase tracking-wider text-bara font-bold">
             Telaah Mendalam
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold font-bricolage text-white mt-1">
+          <h2 className="text-2xl sm:text-4xl font-bold font-bricolage text-[#181C1F] mt-1">
             Tiga Dimensi Krisis: Kesehatan, Ekonomi, dan Ekologi
           </h2>
-          <p className="text-xs sm:text-sm text-kabut-dark max-w-prose-70 mt-1">
+          <p className="text-xs sm:text-sm text-gambut-muted max-w-prose-70 mt-1">
             Ulasan terstruktur yang dapat disunting untuk kebutuhan materi presentasi dan edukasi publik.
           </p>
         </div>
@@ -94,7 +94,7 @@ export default function Konten() {
         <Gallery />
       </section>
 
-      {/* 4. AKSI NYATA CHECKLIST */}
+      {/* 4. AKSI NYATA CHECKLIST (Gamified & Playful) */}
       <section className="space-y-8">
         <ActionChecklist />
       </section>

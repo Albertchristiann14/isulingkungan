@@ -4,33 +4,26 @@
 
 @layer base {
   :root {
-    --color-kabut-light: #E7E2DB;
-    --color-kabut: #C9C2B8;
-    --color-kabut-dark: #9E978D;
-    --color-gambut-deep: #14110F;
-    --color-gambut: #3B2A20;
-    --color-gambut-light: #5A4335;
+    --bg-main: #FAF8F5;
+    --text-main: #1F2428;
+    --text-muted: #5C646D;
     --color-bara: #D8432B;
-    --color-bara-glow: #FF5733;
-    --color-arang-deep: #121416;
-    --color-arang: #2B2F33;
-    --color-arang-light: #42484F;
-    --color-tunas: #5E8C61;
+    --color-gambut: #3B2A20;
+    --color-tunas: #3D7845;
   }
 
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    background-color: #14110F;
-    color: #E7E2DB;
+    background-color: #FAF8F5;
+    color: #1F2428;
     font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.6;
+    line-height: 1.65;
     overflow-x: hidden;
   }
 
@@ -38,6 +31,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Bricolage Grotesque', sans-serif;
     letter-spacing: -0.025em;
+    color: #181C1F;
     font-weight: 700;
   }
 
@@ -48,7 +42,6 @@
     border-radius: 6px;
   }
 
-  /* Prevent text selection distortion on interactive buttons */
   button {
     user-select: none;
     -webkit-user-select: none;
@@ -57,28 +50,17 @@
 }
 
 @layer utilities {
-  /* UI/UX Pro Max: Tabular numbers for counters, timers & data */
   .tabular-nums {
     font-variant-numeric: tabular-nums;
   }
 
-  /* 44px min touch target */
   .touch-target {
     min-height: 44px;
     min-width: 44px;
   }
 
-  /* Atmospheric glow */
   .text-glow-bara {
-    text-shadow: 0 0 24px rgba(216, 67, 43, 0.45);
-  }
-
-  .box-glow-bara {
-    box-shadow: 0 4px 30px rgba(216, 67, 43, 0.18);
-  }
-
-  .box-glow-tunas {
-    box-shadow: 0 4px 30px rgba(94, 140, 97, 0.2);
+    text-shadow: 0 0 24px rgba(216, 67, 43, 0.4);
   }
 }
 
@@ -88,13 +70,13 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #14110F;
+  background: #F2EDE4;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2B2F33;
+  background: #C9C2B8;
   border-radius: 4px;
-  border: 2px solid #14110F;
+  border: 2px solid #F2EDE4;
 }
 
 ::-webkit-scrollbar-thumb:hover {
